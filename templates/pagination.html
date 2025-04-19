@@ -1,0 +1,42 @@
+
+
+{% block content %}
+<!-- Pagination -->
+<div class="flex justify-center mt-8">
+    <nav aria-label="Pagination">
+        <ul class="flex items-center space-x-4">
+            {% if page_obj.has_previous %}
+                <li>
+                    <a href="?page=1" class="px-4 py-2 text-sm text-gray-600 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
+                        First
+                    </a>
+                </li>
+                <li>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 text-sm text-gray-600 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
+                        Previous
+                    </a>
+                </li>
+            {% endif %}
+            
+            <li>
+                <span class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-md">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+            </li>
+            
+            {% if page_obj.has_next %}
+                <li>
+                    <a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 text-sm text-gray-600 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
+                        Next
+                    </a>
+                </li>
+                <li>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="px-4 py-2 text-sm text-gray-600 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
+                        Last
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock content %}
